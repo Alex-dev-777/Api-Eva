@@ -14,7 +14,6 @@ class RegisterController extends Controller
     {
         $this-> userService = $userService; 
     }
-
     public function register(Request $request)
     {
         $userData = $request->validate([
@@ -22,9 +21,8 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed'
         ]);
-
         $user = $this->userService->store($userData);
-        $token = $user->createToken('mi-token')->plainTextToken;
+        $token = $user->createToken('login-token')->plainTextToken;
         return response()->json(['token' => $token]);
     }
 }

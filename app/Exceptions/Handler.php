@@ -27,7 +27,6 @@ class Handler extends ExceptionHandler
                 ]
             ], 401);
         }
-
         // Llamada al método padre en caso de que no sea una excepción de autenticación
         return parent::render($request, $e);
     }
